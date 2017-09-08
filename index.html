@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <input type="text" name="" value=""><button>Add</button>
+    <ul>{{ items }}</ul>
+
+    <script src="jquery/jquery.min.js" charset="utf-8"></script>
+    <script>
+      $(function() {
+        $('button').on('click', function() {
+          $.ajax({
+            url: '/items',
+            type: 'POST',
+            data: JSON.stringify({ name: $('input').val() }),
+            contentType: 'application/json'
+          })
+          .then(item=> {
+            $('ul').append(`<li>${item.name}</li>`)
+          })
+        })
+      })
+    </script>
+  </body>
+</html>
