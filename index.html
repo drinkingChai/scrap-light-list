@@ -21,6 +21,7 @@
           })
           .then(item=> {
             $('ul').append(`<li>${item.name}</li>`)
+            $('input').val("")
           })
         })
       })
